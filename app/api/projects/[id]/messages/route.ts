@@ -63,9 +63,9 @@ export async function POST(
       },
     })
 
-    // Interpret the prompt and update blueprint
+    // Interpret the prompt and update blueprint (using LLM or pattern matching)
     const currentBlueprint = JSON.parse(project.blueprint) as Blueprint
-    const result = interpretPrompt(content, currentBlueprint)
+    const result = await interpretPrompt(content, currentBlueprint)
 
     // Save updated blueprint to project
     await prisma.project.update({

@@ -12,12 +12,12 @@ This is a working MVP that runs on a single server, focusing on clean architectu
 
 ## Features
 
-- **Natural Language Interface**: Type simple prompts to build apps
-- **Real-time Code Generation**: Automatically generates Next.js apps based on your blueprint
-- **Live Preview**: See your generated app running in an iframe
-- **Blueprint Management**: View and modify your app's data models
-- **Environment Variables**: Manage ENV vars for generated apps
-- **In-Memory Storage**: Generated apps use in-memory data stores (upgradable to real DB)
+- **🤖 AI-Powered Interface**: Uses Claude AI for natural language understanding (with pattern-matching fallback)
+- **⚡ Real-time Code Generation**: Automatically generates Next.js apps based on your blueprint
+- **👁️ Live Preview**: See your generated app running in an iframe
+- **📋 Blueprint Management**: View and modify your app's data models
+- **🔧 Environment Variables**: Manage ENV vars for generated apps
+- **💾 In-Memory Storage**: Generated apps use in-memory data stores (upgradable to real DB)
 
 ## Tech Stack
 
@@ -36,6 +36,15 @@ This is a working MVP that runs on a single server, focusing on clean architectu
 
 2. **Verify setup**:
    The database will be created at `prisma/dev.db` and the `generated/` folder will be ready for generated apps.
+
+3. **(Optional) Enable AI Mode**:
+   For AI-powered prompt understanding, create a `.env.local` file:
+   ```bash
+   ANTHROPIC_API_KEY=sk-ant-your-key-here
+   ```
+   Get your free API key at [https://console.anthropic.com/](https://console.anthropic.com/)
+
+   See [LLM_SETUP.md](LLM_SETUP.md) for detailed instructions.
 
 ## Usage
 

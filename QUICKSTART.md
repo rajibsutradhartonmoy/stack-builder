@@ -10,6 +10,10 @@ Get up and running with Stack Builder in 3 minutes!
 
 # Install dependencies (this automatically sets up the database)
 npm install
+
+# (Optional) Enable AI mode for smarter prompts
+# Create .env.local with: ANTHROPIC_API_KEY=your_key_here
+# Get free key at: https://console.anthropic.com/
 ```
 
 ## Start the App

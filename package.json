@@ -11,6 +11,7 @@
     "postinstall": "node scripts/init-db.js"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.69.0",
     "@prisma/client": "^5.19.0",
     "better-sqlite3": "^12.4.1",
     "next": "^14.2.0",
