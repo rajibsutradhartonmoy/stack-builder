@@ -1,0 +1,52 @@
+// Prisma schema for stack-builder
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// Project represents a user's generated app
+model Project {
+  id        String   @id @default(cuid())
+  name      String
+  // Blueprint stores the app structure as JSON
+  // { entities: [{ name, fields: [{name, type}] }] }
+  blueprint String   @default("{}")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  messages  ChatMessage[]
+  envVars   EnvVar[]
+}
+
+// ChatMessage stores conversation history
+model ChatMessage {
+  id        String   @id @default(cuid())
+  projectId String
+  role      String   // "user" or "system"
+  content   String
+  createdAt DateTime @default(now())
+
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
+}
+
+// EnvVar stores environment variables for generated apps
+model EnvVar {
+  id        String   @id @default(cuid())
+  projectId String
+  key       String
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, key])
+  @@index([projectId])
+}
